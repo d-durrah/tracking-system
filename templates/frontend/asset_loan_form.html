@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Asset Loan Form</title>
+{% endblock %}
+
+{% block content %}
+  <section class="home-section">
+      <div class="text">Resource Sign-off Form</div>
+      <!-- Page content -->
+<main>
+    <form action="{% url 'form' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+</main>
+  </section>
+{% endblock %}

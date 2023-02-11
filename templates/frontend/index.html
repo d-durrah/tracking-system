@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Dashboard</title>
+{% endblock %}
+
+{% block content %}
+<section class="home-section">
+    <!--Success message-->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">
+            {{ message|safe }}
+            <a href="{% url 'index' %}" class="close">x</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <!-- Page content-->
+    <div class="text">Tracking System Dashboard</div>
+
+    <main>
+    </main>
+</section>
+{% endblock %}
