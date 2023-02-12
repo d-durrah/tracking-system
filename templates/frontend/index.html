@@ -8,14 +8,11 @@
 <section class="home-section">
     <!--Success message-->
     {% if messages %}
-    <ul class="messages">
+    <div id="messages-container">
         {% for message in messages %}
-        <li class="{{ message.tags }}">
-            {{ message|safe }}
-            <a href="{% url 'index' %}" class="close">x</a>
-        </li>
+        <p><span>&#10004;</span>{{message}}</p>
         {% endfor %}
-    </ul>
+    </div>
     {% endif %}
     <!-- Page content-->
     <div class="text">Tracking System Dashboard</div>

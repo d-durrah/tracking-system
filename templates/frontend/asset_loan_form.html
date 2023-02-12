@@ -9,7 +9,7 @@
       <div class="text">Resource Sign-off Form</div>
       <!-- Page content -->
 <main>
-    <form action="{% url 'form' %}" method="POST">
+    <form action="{% url 'frontend:form' %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit">

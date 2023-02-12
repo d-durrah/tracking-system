@@ -25,7 +25,7 @@
 }
 
 .sidebar .logo-details {
-    height: 200px;
+    height: 150px;
     display: flex;
     align-items: center;
     position: relative;
@@ -39,8 +39,8 @@
 .sidebar .logo-details .logo_name {
     color: #fff;
     font-size: 25px;
-    font-weight: 600;
-    text-align: center;
+    font-weight: 400;
+    text-align: left;
     opacity: 0;
     transition: all 0.5s ease;
 }
@@ -207,4 +207,22 @@
     .sidebar li .tooltip {
         display: none;
     }
+}
+
+#messages-container {
+    width: 60%;
+    margin: 0 auto;
+
+}
+
+#messages-container p {
+   color: green;
+    background: #d5ff9e;
+    padding: 1rem;
+    border-radius: 10px ;
+}
+
+#messages-container span {
+     padding-right: 10px;
+    font-size: 1rem;
 }

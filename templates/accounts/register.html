@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+</head>
+<body>
+
+
+<div class="error-container" id="error-container">
+    {% for field in form %}
+    {% for error in field.errors %}
+    <p class="error" id="error"><span>&#9888;</span>{{ error }}</p>
+    {% endfor %}
+    {% endfor %}
+</div>
+
+<div class="container">
+    <div class="top-container">
+        <div class="logo-container">
+            <img id="logo" src="{% static 'images/logo.png' %}" alt="logo">
+        </div>
+        <div>
+            <h1 id="site-name">CCIT Mobile Assets Tracking System</h1>
+        </div>
+    </div>
+
+    <form name="register" method="POST" class="register-form" onsubmit="return formValidation()">
+        {% csrf_token %}
+        <div>
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+            <span id="firstname-error-message" class="error-message">
+            </span>
+        </div>
+
+        <div>
+            {{ form.last_name.label}}
+            {{ form.last_name }}
+            <span id="lastname-error-message" class="error-message">
+
+            </span>
+        </div>
+
+        <div>
+            {{ form.username.label }}
+            {{ form.username }}
+            <span id="username-error-message" class="error-message">
+
+            </span>
+        </div>
+
+        <div>
+            {{ form.email.label }}
+            {{ form.email }}
+            <span id="email-error-message" class="error-message"></span>
+
+
+        </div>
+
+        <div>
+            {{ form.password1.label }}
+            {{ form.password1 }}
+            <span id="password1-error-message" class="error-message">
+
+            </span>
+        </div>
+
+        <div>
+            {{ form.password2.label }}
+            {{ form.password2 }}
+            <span id="password2-error-message" class="error-message">
+
+            </span>
+        </div>
+
+
+        <div class="register-submit-button">
+            <input type="submit" value="Register"/>
+        </div>
+
+    </form>
+
+
+    <p class="login-alt-action">If you already have an account, <a href="{% url 'accounts:login' %}">login</a> instead.
+    </p>
+</div>
+<script src="{% static 'js/accountsValidation.js' %}"></script>
+
+</body>
+</html>

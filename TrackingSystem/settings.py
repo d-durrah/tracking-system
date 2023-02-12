@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-9fywl0v3u3ofh-_@&1v%(@#!&=3b=i-@++ij$2x_2=lew)kx82
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+USE_DJANGO_JQUERY = True
+
 ALLOWED_HOSTS = []
 
 
@@ -34,10 +36,12 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    # 'authconfig.CustomAuthConfig',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'smart_selects',
     'frontend',
     'management',
     'loaning',

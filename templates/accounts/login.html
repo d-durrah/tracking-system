@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+</head>
+<body>
+<div id="login-messages-container">
+    {% for message in messages %}
+  <p><span>&#10004;</span>{{message}}</p>
+
+{% endfor %}
+</div>
+
+<div class="error-container" id="error-container">
+    {% for field in login_form %}
+      {% for error in field.errors %}
+       <p class="error form-error" id="error"><span >&#9888;</span>{{ error }}</p>
+      {% endfor %}
+    {% endfor %}
+
+{% if login_form.non_field_errors %}
+      <p class="form-error error">
+        {% for error in login_form.non_field_errors %}
+          <span >&#9888;</span>
+          {{ error }}
+        {% endfor %}
+      </p>
+  {% endif %}
+
+</div>
+<div class="container">
+    <div class="top-container">
+    <div class="logo-container">
+        <img id="logo" src="../../../static/images/logo.png" alt="logo">
+    </div>
+    <div>
+        <h1 id="site-name">CCIT Mobile Assets Tracking System</h1>
+    </div>
+</div>
+<div id="login-container">
+  <form method="POST">
+      {% csrf_token %}
+      <div>
+            {{ login_form.username.label }}
+             {{ login_form.username }}
+      </div>
+      <div>
+          {{ login_form.password.label }}
+          {{login_form.password}}
+      </div>
+      <input type="submit" value ="Login" id="login-button"/>
+  </form>
+  <p class="login-alt-action">Don't have an account? <a href="{% url 'accounts:register' %}">Create an account</a>.</p>
+</div>
+</div>
+</body>
+</html>

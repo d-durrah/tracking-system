@@ -19,6 +19,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
+    path('chaining/', include('smart_selects.urls')),
+    path('', include('accounts.urls')),
 ]
 
 admin.site.index_title = 'Admin Dashboard'

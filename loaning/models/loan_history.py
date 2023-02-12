@@ -1,7 +1,7 @@
 from django.core.validators import MinLengthValidator, RegexValidator
 from django.db import models
 from datetime import date
-from management.models.add_assets import Asset
+from management.models.add_asset import Asset
 
 # validation
 numeric = RegexValidator(r'^\d+$', 'ID number must be 8 numeric values.')

@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import date
-from management.models.add_assets import Asset
+from management.models.add_asset import Asset
 
 
 class Current(models.Model):
