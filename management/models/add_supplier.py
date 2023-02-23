@@ -7,3 +7,6 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.supplier
+
+    class Meta:
+        unique_together = ('supplier', 'category',)

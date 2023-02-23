@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>View submission</title>
+{% endblock %}
+
+{% block formstyling %}
+<!-- jsPDF and html2PDF CDN -->
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-html2canvas@latest/dist/jspdf-html2canvas.min.js"></script>
+
+<style>
+    #container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    #buttons {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    input[type=submit], #pdfButton {
+        width: 45%;
+        background-color: #004DB1;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover, #pdfButton:hover {
+        background-color: #3875d7;
+    }
+
+    #messages-container p {
+        color: darkgoldenrod;
+    }
+
+    .box {
+        width: 100%;
+        height: 75px;
+        background: lightgray;
+        border: 1px dotted black;
+        justify-items: center;
+    }
+
+    #sig, .show {
+        display: none;
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<section class="home-section">
+    <!--Message-->
+    {% if messages %}
+    <div id="messages-container">
+        {% for message in messages %}
+        <p><span>&#10004;</span>{{message}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <!-- Page content-->
+    <div id="generatePdf">
+        <div class="text">Resource Sign-out Form</div>
+        <main>
+            <div id="container">
+                <div id="hide">
+                    <p><b>ID number:</b> {{ ID_number }}</p><br>
+                    <p><b>Resource asset number:</b> {{ resource_asset_number }}</p><br>
+                    <p><b>Item description:</b> {{ item_description }}</p><br>
+                    <p><b>Purpose:</b> {{ purpose }}</p><br>
+                    <p><b>Borrow date:</b> {{ borrow_date }}</p><br>
+                    <p><b>Return date:</b> {{ return_date }}</p><br>
+                    <div id="sig">
+                        <p><b>Asset recipient:</b></p><br>
+                        <div class="box"></div>
+                        <br>
+                        <p><b>Supervisor:</b></p><br>
+                        <div class="box"></div>
+                        <br>
+                        <p><b>Dean:</b></p><br>
+                        <div class="box"></div>
+                        <br>
+                    </div>
+                    <br>
+                </div>
+                <form>
+                    <div class="show">
+                        <label>Upload signatures:
+                            <input type="file"></label><br>
+                    </div>
+                    <div id="buttons">
+                        <input id="pdfButton" type="button" value="Generate PDF" data-html2canvas-ignore="true">
+                        <input class="show" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </main>
+        <div>
+</section>
+{% endblock %}
+
+
+{% block script %}
+<script>
+    const button = document.getElementById("pdfButton");
+    const page = document.getElementById("generatePdf");
+    const element = document.getElementById("sig")
+
+    const content = document.getElementById("hide");
+    const field = document.getElementsByClassName("show");
+
+    button.addEventListener('click', function () {
+        $(element).css("display", "block");
+        html2PDF(page, {
+            jsPDF: {
+                format: 'a4',
+            },
+            imageType: 'image/jpeg',
+            output: 'ResourceSignOutForm.pdf'
+        });
+        $(button).css("display", "none");
+        $(content).css("display", "none");
+        $(field).css("display", "block");
+        document.title('Upload Signature');
+    });
+
+</script>
+
+<!--<script>
+    var button = document.getElementById("pdfButton");
+    button.addEventListener("click", function () {
+        var doc = new jsPDF("p", "px", "a4");
+        margins = {
+            top: 10,
+            left: 10,
+            right: 0,
+            width: 200
+        };
+        var makePDF = document.querySelector("#generatePdf");
+        // fromHTML Method
+        doc.fromHTML(makePDF, margins.left, margins.top, { width: margins.width });
+
+        // date
+        var m_names = new Array("January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September",
+            "October", "November", "December");
+
+        var today = new Date();
+        var curr_date = today.getDate();
+        var curr_month = today.getMonth();
+        var curr_year = today.getFullYear();
+
+        today = m_names[curr_month] + " " + curr_date + ", " + curr_year;
+        var newdat = today;
+
+        doc.setFontType("italic");
+        doc.setFontSize(10);
+
+        doc.text(300, 25, newdat);
+
+        // text
+        doc.setFontSize(12);
+        doc.text(10, 75, "Asset recipient:");
+        doc.roundedRect(12, 80, 190, 15, 5, 5, 'F');
+        doc.text(10, 85, "Supervisor:");
+        doc.text(10, 95, "Dean:");
+        doc.save("output.pdf");
+    });
+</script>-->
+{% endblock %}

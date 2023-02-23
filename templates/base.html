@@ -3,11 +3,15 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <!-- Boxicons CDN Link -->
+    {% block title %}
+    {% endblock %}
+    <!--JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- Boxicons CDN -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!--Page styling-->
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
-    {% block title %}
+    {% block formstyling %}
     {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -39,9 +43,9 @@
         <li>
             <a href="{% url 'frontend:form' %}">
                 <i class='bx bx-grid-alt'></i>
-                <span class="links_name">Resource-sign off form</span>
+                <span class="links_name">Resource sign-out form</span>
             </a>
-            <span class="tooltip">Resource-sign off form</span>
+            <span class="tooltip">Resource sign-out form</span>
         </li>
         <!--Admin page-->
         {% if request.user.is_superuser %}
@@ -89,5 +93,7 @@
         }
     }
 </script>
+{% block script %}
+{% endblock %}
 </body>
 </html>

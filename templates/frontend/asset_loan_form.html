@@ -1,19 +1,89 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
-<title>Asset Loan Form</title>
+<title>Resource Sign-out Form</title>
+{% endblock %}
+
+{% block formstyling %}
+<style>
+    #container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #004DB1;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #3875d7;
+    }
+
+    .input {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .error {
+        color: red;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+</style>
 {% endblock %}
 
 {% block content %}
-  <section class="home-section">
-      <div class="text">Resource Sign-off Form</div>
-      <!-- Page content -->
-<main>
-    <form action="{% url 'frontend:form' %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
-    </form>
-</main>
-  </section>
+    <section class="home-section">
+        <div class="text">Resource Sign-out Form</div>
+        <!-- Page content -->
+        <main>
+            <div id="container">
+                <form action="{% url 'frontend:form' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="input">
+                        {{ form.ID_number.label }}:
+                        {{ form.ID_number }}
+                    </div>
+                    <span class="error">{{ form.errors.ID_number | striptags }}</span><br>
+                    <div class="input">
+                        {{ form.resource_asset_number.label }}:
+                        {{ form.resource_asset_number }}
+                    </div>
+                    <br>
+                    <div class="input">
+                        {{ form.purpose.label }}:
+                        {{ form.purpose }}
+                    </div>
+                    <br>
+                    <div class="input">
+                        {{ form.borrow_date.label }}:
+                        {{ form.borrow_date }}
+                    </div>
+                    <br>
+                    <div class="input">
+                        {{ form.return_date.label }}:
+                        {{ form.return_date }}
+                    </div>
+                    <br>
+                        <input type="submit" value="Submit">
+                </form>
+            </div>
+        </main>
+    </section>
 {% endblock %}
