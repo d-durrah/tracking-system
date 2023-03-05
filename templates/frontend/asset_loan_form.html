@@ -62,8 +62,8 @@
                     </div>
                     <span class="error">{{ form.errors.ID_number | striptags }}</span><br>
                     <div class="input">
-                        {{ form.resource_asset_number.label }}:
-                        {{ form.resource_asset_number }}
+                        {{ form.asset_ID.label }}:
+                        {{ form.asset_ID }}
                     </div>
                     <br>
                     <div class="input">
@@ -80,7 +80,7 @@
                         {{ form.return_date.label }}:
                         {{ form.return_date }}
                     </div>
-                    <br>
+                    <span class="error">{{ form.return_date.errors | striptags }}</span><br>
                         <input type="submit" value="Submit">
                 </form>
             </div>

@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.urls import path
 from .views import index, generatePDF
-from loaning.views import resourceSignOutForm
+from loaning.views import resourceSignOutForm, signatureForm
 
 app_name = 'frontend'
 urlpatterns = [
     path('', index, name='index'),
     path('form', resourceSignOutForm, name='form'),
-    path('generate_pdf', generatePDF, name='pdf')
+    path('form/generate_pdf', generatePDF, name='pdf'),
+    path('form/generate_pdf/upload_signature', signatureForm, name='sig'),
 ]

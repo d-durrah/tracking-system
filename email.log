@@ -1,0 +1,113 @@
+DEBUG:asyncio:Using proactor: IocpProactor
+DEBUG:asyncio:Using proactor: IocpProactor
+INFO:mail.log:Available AUTH mechanisms: LOGIN(builtin) PLAIN(builtin)
+INFO:mail.log:Peer: ('::1', 64710, 0, 0)
+INFO:mail.log:('::1', 64710, 0, 0) handling connection
+DEBUG:mail.log:('::1', 64710, 0, 0) << b'220 Danlok Python SMTP 1.4.4.post2'
+INFO:mail.log:('::1', 64710, 0, 0) EOF received
+INFO:mail.log:('::1', 64710, 0, 0) Connection lost during _handle_client()
+INFO:mail.log:('::1', 64710, 0, 0) connection lost
+INFO:mail.log:Available AUTH mechanisms: LOGIN(builtin) PLAIN(builtin)
+INFO:mail.log:Peer: ('::1', 64715, 0, 0)
+INFO:mail.log:('::1', 64715, 0, 0) handling connection
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'220 Danlok Python SMTP 1.4.4.post2'
+DEBUG:mail.log:_handle_client readline: b'ehlo Danlok\r\n'
+INFO:mail.log:('::1', 64715, 0, 0) >> b'ehlo Danlok'
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'250-Danlok'
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'250-SIZE 33554432'
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'250-8BITMIME'
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'250-SMTPUTF8'
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'250 HELP'
+DEBUG:mail.log:_handle_client readline: b'mail FROM:<webmaster@localhost> size=673\r\n'
+INFO:mail.log:('::1', 64715, 0, 0) >> b'mail FROM:<webmaster@localhost> size=673'
+INFO:mail.log:('::1', 64715, 0, 0) sender: webmaster@localhost
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'250 OK'
+DEBUG:mail.log:_handle_client readline: b'rcpt TO:<60093427@udst.edu.qa>\r\n'
+INFO:mail.log:('::1', 64715, 0, 0) >> b'rcpt TO:<60093427@udst.edu.qa>'
+INFO:mail.log:('::1', 64715, 0, 0) recip: 60093427@udst.edu.qa
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'250 OK'
+DEBUG:mail.log:_handle_client readline: b'data\r\n'
+INFO:mail.log:('::1', 64715, 0, 0) >> b'data'
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'354 End data with <CR><LF>.<CR><LF>'
+DEBUG:mail.log:DATA readline: b'Content-Type: text/plain; charset="utf-8"\r\n'
+DEBUG:mail.log:DATA readline: b'MIME-Version: 1.0\r\n'
+DEBUG:mail.log:DATA readline: b'Content-Transfer-Encoding: 8bit\r\n'
+DEBUG:mail.log:DATA readline: b'Subject: Password reset on localhost:8000\r\n'
+DEBUG:mail.log:DATA readline: b'From: webmaster@localhost\r\n'
+DEBUG:mail.log:DATA readline: b'To: 60093427@udst.edu.qa\r\n'
+DEBUG:mail.log:DATA readline: b'Date: Sat, 25 Feb 2023 14:48:23 -0000\r\n'
+DEBUG:mail.log:DATA readline: b'Message-ID: <167733650305.26600.615999313691604758@Danlok>\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b"You're receiving this email because you requested a password reset for your user account at localhost:8000.\r\n"
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'Please go to the following page and choose a new password:\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'http://localhost:8000/password-reset-confirm/Mg/bk6usn-599b2f449aab692b10b430a8f903a749/\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'Your username, in case you\xe2\x80\x99ve forgotten: 60093427\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'Thanks for using our site!\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'The localhost:8000 team\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'.\r\n'
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'250 OK'
+DEBUG:mail.log:_handle_client readline: b'quit\r\n'
+INFO:mail.log:('::1', 64715, 0, 0) >> b'quit'
+DEBUG:mail.log:('::1', 64715, 0, 0) << b'221 Bye'
+INFO:mail.log:('::1', 64715, 0, 0) Connection lost during _handle_client()
+INFO:mail.log:('::1', 64715, 0, 0) connection lost
+INFO:mail.log:Available AUTH mechanisms: LOGIN(builtin) PLAIN(builtin)
+INFO:mail.log:Peer: ('::1', 65110, 0, 0)
+INFO:mail.log:('::1', 65110, 0, 0) handling connection
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'220 Danlok Python SMTP 1.4.4.post2'
+DEBUG:mail.log:_handle_client readline: b'ehlo Danlok\r\n'
+INFO:mail.log:('::1', 65110, 0, 0) >> b'ehlo Danlok'
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'250-Danlok'
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'250-SIZE 33554432'
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'250-8BITMIME'
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'250-SMTPUTF8'
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'250 HELP'
+DEBUG:mail.log:_handle_client readline: b'mail FROM:<webmaster@localhost> size=675\r\n'
+INFO:mail.log:('::1', 65110, 0, 0) >> b'mail FROM:<webmaster@localhost> size=675'
+INFO:mail.log:('::1', 65110, 0, 0) sender: webmaster@localhost
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'250 OK'
+DEBUG:mail.log:_handle_client readline: b'rcpt TO:<60093427@udst.edu.qa>\r\n'
+INFO:mail.log:('::1', 65110, 0, 0) >> b'rcpt TO:<60093427@udst.edu.qa>'
+INFO:mail.log:('::1', 65110, 0, 0) recip: 60093427@udst.edu.qa
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'250 OK'
+DEBUG:mail.log:_handle_client readline: b'data\r\n'
+INFO:mail.log:('::1', 65110, 0, 0) >> b'data'
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'354 End data with <CR><LF>.<CR><LF>'
+DEBUG:mail.log:DATA readline: b'Content-Type: text/plain; charset="utf-8"\r\n'
+DEBUG:mail.log:DATA readline: b'MIME-Version: 1.0\r\n'
+DEBUG:mail.log:DATA readline: b'Content-Transfer-Encoding: 8bit\r\n'
+DEBUG:mail.log:DATA readline: b'Subject: Password reset on localhost:8000\r\n'
+DEBUG:mail.log:DATA readline: b'From: webmaster@localhost\r\n'
+DEBUG:mail.log:DATA readline: b'To: 60093427@udst.edu.qa\r\n'
+DEBUG:mail.log:DATA readline: b'Date: Sat, 25 Feb 2023 14:56:23 -0000\r\n'
+DEBUG:mail.log:DATA readline: b'Message-ID: <167733698368.26600.18127140841001188843@Danlok>\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b"You're receiving this email because you requested a password reset for your user account at localhost:8000.\r\n"
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'Please go to the following page and choose a new password:\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'http://localhost:8000/password-reset-confirm/Mg/bk6v5z-a985c52926dd60d32f385a048b18de4f/\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'Your username, in case you\xe2\x80\x99ve forgotten: 60093427\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'Thanks for using our site!\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'The localhost:8000 team\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'\r\n'
+DEBUG:mail.log:DATA readline: b'.\r\n'
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'250 OK'
+DEBUG:mail.log:_handle_client readline: b'quit\r\n'
+INFO:mail.log:('::1', 65110, 0, 0) >> b'quit'
+DEBUG:mail.log:('::1', 65110, 0, 0) << b'221 Bye'
+INFO:mail.log:('::1', 65110, 0, 0) Connection lost during _handle_client()
+INFO:mail.log:('::1', 65110, 0, 0) connection lost

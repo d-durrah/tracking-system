@@ -1,2 +1,2 @@
-from .loan_history import Logg
-from .current_loans import Log
+from .resource_signout_log import Log
+from .signatures import Signature

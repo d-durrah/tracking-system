@@ -51,7 +51,7 @@
         justify-items: center;
     }
 
-    #sig, .show {
+    #sig {
         display: none;
     }
 </style>
@@ -73,36 +73,24 @@
         <div class="text">Resource Sign-out Form</div>
         <main>
             <div id="container">
-                <div id="hide">
-                    <p><b>ID number:</b> {{ ID_number }}</p><br>
-                    <p><b>Resource asset number:</b> {{ resource_asset_number }}</p><br>
-                    <p><b>Item description:</b> {{ item_description }}</p><br>
-                    <p><b>Purpose:</b> {{ purpose }}</p><br>
-                    <p><b>Borrow date:</b> {{ borrow_date }}</p><br>
-                    <p><b>Return date:</b> {{ return_date }}</p><br>
-                    <div id="sig">
-                        <p><b>Asset recipient:</b></p><br>
-                        <div class="box"></div>
-                        <br>
-                        <p><b>Supervisor:</b></p><br>
-                        <div class="box"></div>
-                        <br>
-                        <p><b>Dean:</b></p><br>
-                        <div class="box"></div>
-                        <br>
-                    </div>
+                <p><b>ID number:</b> {{ ID_number }}</p><br>
+                <p><b>Resource asset number:</b> {{ resource_asset_number }}</p><br>
+                <p><b>Item description:</b> {{ item_description }}</p><br>
+                <p><b>Purpose:</b> {{ purpose }}</p><br>
+                <p><b>Borrow date:</b> {{ borrow_date }}</p><br>
+                <p><b>Return date:</b> {{ return_date }}</p><br>
+                <div id="sig">
+                    <p><b>Asset recipient:</b></p><br>
+                    <div class="box"></div>
+                    <br>
+                    <p><b>Supervisor:</b></p><br>
+                    <div class="box"></div>
+                    <br>
+                    <p><b>Dean:</b></p><br>
+                    <div class="box"></div>
                     <br>
                 </div>
-                <form>
-                    <div class="show">
-                        <label>Upload signatures:
-                            <input type="file"></label><br>
-                    </div>
-                    <div id="buttons">
-                        <input id="pdfButton" type="button" value="Generate PDF" data-html2canvas-ignore="true">
-                        <input class="show" type="submit" value="Submit">
-                    </div>
-                </form>
+                <input id="pdfButton" type="button" value="Generate PDF" data-html2canvas-ignore="true">
             </div>
         </main>
         <div>
@@ -114,10 +102,7 @@
 <script>
     const button = document.getElementById("pdfButton");
     const page = document.getElementById("generatePdf");
-    const element = document.getElementById("sig")
-
-    const content = document.getElementById("hide");
-    const field = document.getElementsByClassName("show");
+    const element = document.getElementById("sig");
 
     button.addEventListener('click', function () {
         $(element).css("display", "block");
@@ -128,54 +113,11 @@
             imageType: 'image/jpeg',
             output: 'ResourceSignOutForm.pdf'
         });
-        $(button).css("display", "none");
-        $(content).css("display", "none");
-        $(field).css("display", "block");
-        document.title('Upload Signature');
+        $(element).css("display", "none");
+        window.setTimeout(function() {
+            window.location.href = "{% url 'frontend:sig' %}";
+        }, 1000);
     });
 
 </script>
-
-<!--<script>
-    var button = document.getElementById("pdfButton");
-    button.addEventListener("click", function () {
-        var doc = new jsPDF("p", "px", "a4");
-        margins = {
-            top: 10,
-            left: 10,
-            right: 0,
-            width: 200
-        };
-        var makePDF = document.querySelector("#generatePdf");
-        // fromHTML Method
-        doc.fromHTML(makePDF, margins.left, margins.top, { width: margins.width });
-
-        // date
-        var m_names = new Array("January", "February", "March",
-            "April", "May", "June", "July",
-            "August", "September",
-            "October", "November", "December");
-
-        var today = new Date();
-        var curr_date = today.getDate();
-        var curr_month = today.getMonth();
-        var curr_year = today.getFullYear();
-
-        today = m_names[curr_month] + " " + curr_date + ", " + curr_year;
-        var newdat = today;
-
-        doc.setFontType("italic");
-        doc.setFontSize(10);
-
-        doc.text(300, 25, newdat);
-
-        // text
-        doc.setFontSize(12);
-        doc.text(10, 75, "Asset recipient:");
-        doc.roundedRect(12, 80, 190, 15, 5, 5, 'F');
-        doc.text(10, 85, "Supervisor:");
-        doc.text(10, 95, "Dean:");
-        doc.save("output.pdf");
-    });
-</script>-->
 {% endblock %}

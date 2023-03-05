@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+    <section class="home-section">
+        <div class="text">Enroll Assets to Miradore</div>
+        <!-- Page content -->
+        <main>
+            {% if error %}
+    <p>{{ error }}</p>
+{% else %}
+    <p>All devices enrolled successfully:</p>
+    <ul>
+        {% for asset in assets %}
+            <li>ID: {{ asset.asset_id }}</li>
+            <li>Name: {{ asset.asset_name }}</li>
+            <li>OS: {{ asset.asset_os }}</li>
+            <li>Enrolled: {{ asset.asset_enrolled }}</li>
+            <li>Resource Asset Number: {{ asset.resource_asset_number }}</li>
+            <br>
+        {% endfor %}
+    </ul>
+{% endif %}
+        </main>
+    </section>
+{% endblock %}
