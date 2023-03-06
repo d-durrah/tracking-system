@@ -4,11 +4,16 @@ from django.shortcuts import render, redirect
 from loaning.models.signatures import Signature
 from loaning.models.resource_signout_log import Log
 from loaning.forms import SignatureForm
+from loaning.models import Log
+from management.models import Asset
 
 # Create your views here.
 @login_required(login_url='accounts:login')
 def index(request):
-    return render(request, 'frontend/index.html')
+    logs = Log.objects.filter(returned=False).order_by('-borrow_date')[:5]
+    assets = Asset.objects.filter(available_to_borrow=True)
+    return render(request, 'frontend/index.html', {'logs': logs, 'assets': assets})
+
 
 @login_required(login_url='accounts:login')
 def generatePDF(request):

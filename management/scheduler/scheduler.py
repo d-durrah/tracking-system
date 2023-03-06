@@ -4,6 +4,7 @@ import requests
 import threading
 from management.models.add_asset import Asset
 
+
 def sync_miradore():
     # Check if the previous job is still running
     if sync_miradore.is_running:
@@ -86,13 +87,13 @@ def sync_miradore():
         asset = Asset.objects.filter(asset_id=device_id).first()
         # update
         if asset:
-            asset.asset_id=device_id,
-            asset.model=model,
-            asset.manufacturer=manufacturer,
-            asset.first_name=first_name,
-            asset.last_name=last_name,
-            asset.user_email=email,
-            asset.available_to_borrow=True,
+            asset.asset_id = device_id,
+            asset.model = model,
+            asset.manufacturer = manufacturer,
+            asset.first_name = first_name,
+            asset.last_name = last_name,
+            asset.user_email = email,
+            asset.available_to_borrow = True,
             asset.save()
 
         # create
