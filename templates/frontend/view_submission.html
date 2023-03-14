@@ -115,7 +115,7 @@
         });
         $(element).css("display", "none");
         window.setTimeout(function() {
-            window.location.href = "{% url 'frontend:sig' %}";
+            window.location.href = "{% url 'frontend:sig' %}?log={{ log_id }}";
         }, 1000);
     });
 

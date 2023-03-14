@@ -20,4 +20,4 @@ class Log(models.Model):
         verbose_name_plural = "Resource Sign-out Logs"
 
     def __str__(self):
-        return str(self.asset_ID)
+        return str(self.id)

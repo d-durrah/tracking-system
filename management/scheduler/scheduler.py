@@ -1,7 +1,6 @@
 import xml.etree.ElementTree as ET
 from apscheduler.schedulers.background import BackgroundScheduler
 import requests
-import threading
 from management.models.add_asset import Asset
 
 def sync_miradore():

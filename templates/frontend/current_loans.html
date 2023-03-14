@@ -1,14 +1,71 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Current loans</title>
+<title>Current Borrowed Assets</title>
+{% endblock %}
+
+{% block formstyling %}
+<style>
+    .bordered-table {
+        border-collapse: collapse;
+        width: 60%;
+        margin: 30px auto;
+    }
+
+    .bordered-table th, .bordered-table td {
+        border: 1px solid #3875d7;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .bordered-table th {
+        background-color: #004DB1;
+        color: white;
+    }
+
+    h2 {
+        background: #d7d7d7;
+        padding: 20px;
+        border-radius: 20px;
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        background: #ffb600;
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
 <section class="home-section">
-    <div class="text">Currently Loaned Assets</div>
+    <div class="text">Currently Borrowed Assets</div>
     <!-- Page content -->
     <main>
+        <table class="bordered-table">
+                <thead>
+                <tr>
+                    <th>Asset ID</th>
+                    <th>ID Number</th>
+                    <th>Model</th>
+                    <th>Borrow Date</th>
+                    <th>Return Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.asset_ID }}</td>
+                    <td>{{ log.ID_number }}</td>
+                    <td>{{ log.model }}</td>
+                    <td>{{ log.borrow_date }}</td>
+                    <td>{{ log.return_date }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
     </main>
 </section>
 {% endblock %}

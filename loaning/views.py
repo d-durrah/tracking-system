@@ -6,7 +6,6 @@ from django.urls import reverse
 from .forms import ResourceSignOutForm, SignatureForm
 from .models.resource_signout_log import Log
 from management.models.add_asset import Asset
-from .models.signatures import Signature
 
 @login_required(login_url='accounts:login')
 def resourceSignOutForm(request):
@@ -27,8 +26,8 @@ def resourceSignOutForm(request):
             model = asset.model
 
             # update asset availability
-            # asset.available_to_borrow = False
-            # asset.save()
+            asset.available_to_borrow = False
+            asset.save()
 
             # save to loan database
             log = Log(
@@ -43,12 +42,7 @@ def resourceSignOutForm(request):
             )
             log.save()
 
-            # send message
-            # messages.info(request, 'Upload signature to complete resource sign-out.')
-
             # redirect to generate pdf page
-            # current = log.id
-            # print(current)
             return HttpResponseRedirect(reverse("frontend:pdf") + '?' + 'log=' + str(log.id))
 
 
@@ -69,9 +63,8 @@ def signatureForm(request):
 
         # check whether it's valid:
         if form.is_valid():
-            # save to signature database
+            # save to signature database along with log_id
             form.save()
-            print("VALID")
 
             # send message
             messages.info(request, 'Resource sign-out completed successfully.')
@@ -81,7 +74,6 @@ def signatureForm(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        print("NOT VALID")
-        form = SignatureForm()
+        form = SignatureForm(initial={'log_id': request.GET.get('log')})
 
     return render(request, 'frontend/submit_signature.html', {'form': form})

@@ -4,6 +4,7 @@ from django.forms import ModelForm
 from django.utils.datetime_safe import date
 from management.models.add_asset import Asset
 from .models.signatures import Signature
+from .models.resource_signout_log import Log
 
 # validation
 numeric = RegexValidator(r'^\d+$', 'ID number must be 8 numeric values.')
@@ -34,4 +35,6 @@ class ResourceSignOutForm(forms.Form):
 class SignatureForm(ModelForm):
     class Meta:
         model = Signature
-        fields = ['signature']
+        fields = ['signature', 'log_id']
+
+    log_id = forms.ModelChoiceField(queryset=Log.objects.all(), widget=forms.HiddenInput())

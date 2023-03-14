@@ -6,21 +6,31 @@
 
 {% block formstyling %}
 <style>
-    .row {
-        width: 50%;
-        margin-left: 25%;
+    .buttons {
+        width: 200px;
+        margin: 0 auto;
+        display: inline;
     }
 
-    .column {
-        float: left;
-        width: 50%;
+    .action_btn {
+        width: 200px;
+        margin: 0 auto;
+        display: inline;
     }
 
-    /* Clear floats after the columns */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
+    button {
+        background-color: white;
+        color: black;
+        border: 2px solid #004DB1;
+        transition-duration: 0.4s;
+        width: 25%;
+        padding-top: 1.5%;
+        padding-bottom: 1.5%;
+    }
+
+    button:hover {
+        background-color: #004DB1;
+        color: white;
     }
 </style>
 {% endblock %}
@@ -37,12 +47,27 @@
     {% endif %}
     <!-- Page content-->
     <div class="text">Tracking System Dashboard</div>
-    <main class="row">
-        <div class="column" style="background: lightblue; border: 1px solid #3875d7;">
-            Currently Borrowed Assets
-        </div>
-          <div class="column" style="background: lightblue; border: 1px solid #3875d7;">
-            Available Assets
+    <main>
+        <p>
+            This website is designed to assist staff of CCIT
+            with tracking mobile assets and troubleshooting common issues.
+        </p><br>
+        <p>
+            To learn how to navigate the site and access our services,
+            please refer to the <a href="#">IT Help page</a>.
+        </p><br>
+        <p>
+            Click on the links below to view a list of currently borrowed assets or available assets:
+        </p><br>
+        <div class="buttons">
+            <div class="action_btn">
+                <a href="{% url 'frontend:current' %}">
+                    <button>Currently Borrowed Assets</button>
+                </a>
+                <a href="{% url 'frontend:available' %}">
+                    <button>Available Assets</button>
+                </a>
+            </div>
         </div>
     </main>
 </section>
