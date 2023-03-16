@@ -7,6 +7,7 @@ from loaning.forms import SignatureForm
 from loaning.models import Log
 from management.models import Asset
 
+
 # Create your views here.
 @login_required(login_url='accounts:login')
 def index(request):

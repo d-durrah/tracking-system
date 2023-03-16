@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'frontend',
     'management',
     'loaning',
+    'user_manual.apps.UserManualConfig',
 ]
 
 MIDDLEWARE = [
