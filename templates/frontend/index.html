@@ -32,6 +32,39 @@
         background-color: #004DB1;
         color: white;
     }
+
+    .bordered-table {
+        border-collapse: collapse;
+        width: 60%;
+        margin: 30px auto;
+    }
+
+    .bordered-table th, .bordered-table td {
+        border: 1px solid #3875d7;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .bordered-table th {
+        background-color: #004DB1;
+        color: white;
+    }
+
+    h2 {
+        background: #d7d7d7;
+        padding: 20px;
+        border-radius: 20px;
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        background: #ffb600;
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+
+
 </style>
 {% endblock %}
 
@@ -46,29 +79,51 @@
     </div>
     {% endif %}
     <!-- Page content-->
-    <div class="text">Tracking System Dashboard</div>
+    <h1>Dashboard</h1>
     <main>
-        <p>
-            This website is designed to assist staff of CCIT
-            with tracking mobile assets and troubleshooting common issues.
-        </p><br>
-        <p>
-            To learn how to navigate the site and access our services,
-            please refer to the <a href="#">IT Help page</a>.
-        </p><br>
-        <p>
-            Click on the links below to view a list of currently borrowed assets or available assets:
-        </p><br>
-        <div class="buttons">
-            <div class="action_btn">
-                <a href="{% url 'frontend:current' %}">
-                    <button>Currently Borrowed Assets</button>
-                </a>
-                <a href="{% url 'frontend:available' %}">
-                    <button>Available Assets</button>
-                </a>
-            </div>
+        <h2>Currently Borrowed Assets</h2>
+            <table class="bordered-table">
+                <thead>
+                <tr>
+                    <th>Asset ID</th>
+                    <th>Model</th>
+                    <th>Borrow Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.asset_ID }}</td>
+                    <td>{{ log.model }}</td>
+                    <td>{{ log.borrow_date }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        <div>
+            <h2>Available Assets</h2>
+            <table class="bordered-table">
+                <thead>
+                <tr>
+                    <th>Asset ID</th>
+                    <th>Model</th>
+                    <th>resource asset number</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for asset in assets %}
+                <tr>
+                    <td>{{ asset.asset_id }}</td>
+                    <td>{{ asset.model }}</td>
+                    <td>{{ asset.resource_asset_number }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
+
+
     </main>
 </section>
 {% endblock %}

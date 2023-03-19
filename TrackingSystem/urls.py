@@ -25,6 +25,7 @@ urlpatterns = [
     path('chaining/', include('smart_selects.urls')),
     path('', include('frontend.urls')),
     path('', include('accounts.urls')),
+    path('user_manual/', include('user_manual.urls'))
     # path('password-reset/', auth_views.PasswordResetView.as_view(
     #      template_name='accounts/password_reset.html',
     #      email_template_name='accounts/password_reset_email.html',

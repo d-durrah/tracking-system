@@ -3,6 +3,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import requests
 from management.models.add_asset import Asset
 
+
 def sync_miradore():
     # Check if the previous job is still running
     if sync_miradore.is_running:
@@ -24,8 +25,9 @@ def sync_miradore():
     # loop through each device in Miradore
     while True:
         # make API request and parse response
-        url = f'https://datasafelytest.online.miradore.com/API/' \
-              f'Device/{device_id}?auth=2_ukNR8fA%7BUn68Hvu&select=InvDevice.*,' \
+
+        url = f'https://datasafely.online.miradore.com/API/' \
+              f'Device/{device_id}?auth=2_Fy5AU84,9xbi]6C&select=InvDevice.*,' \
               f'Tag.Name,User.Email,User.LastName,User.FirstName' \
               f'&filters=InvDevice.InventoryTime%20gt%20%2724.06.2014%27&options=dateFormat=dd.MM.yyyy'
         response = requests.get(url)
@@ -85,13 +87,13 @@ def sync_miradore():
         asset = Asset.objects.filter(asset_id=device_id).first()
         # update
         if asset:
-            asset.asset_id=device_id,
-            asset.model=model,
-            asset.manufacturer=manufacturer,
-            asset.first_name=first_name,
-            asset.last_name=last_name,
-            asset.user_email=email,
-            asset.available_to_borrow=True,
+            asset.asset_id = device_id,
+            asset.model = model,
+            asset.manufacturer = manufacturer,
+            asset.first_name = first_name,
+            asset.last_name = last_name,
+            asset.user_email = email,
+            asset.available_to_borrow = True,
             asset.save()
 
         # create
