@@ -51,6 +51,7 @@
     }
 
     h2 {
+        font-size: 16px;
         background: #d7d7d7;
         padding: 20px;
         border-radius: 20px;
@@ -60,26 +61,23 @@
 
     h1 {
         background: #ffb600;
-        margin-bottom: 40px;
-        padding: 20px;
+        margin-bottom: 25px;
     }
-
-
 </style>
 {% endblock %}
 
 {% block content %}
 <section class="home-section">
+    <!-- Page content-->
+    <h1>Dashboard</h1>
     <!--Success message-->
     {% if messages %}
-    <div id="messages-container">
+    <div id="messages-container" style="margin-top: -25px; margin-bottom: 25px;">
         {% for message in messages %}
         <p><span>&#10004;</span>{{ message }}</p>
         {% endfor %}
     </div>
     {% endif %}
-    <!-- Page content-->
-    <h1>Dashboard</h1>
     <main>
         <h2>Currently Borrowed Assets</h2>
             <table class="bordered-table">
@@ -100,7 +98,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-
         <div>
             <h2>Available Assets</h2>
             <table class="bordered-table">
@@ -108,7 +105,7 @@
                 <tr>
                     <th>Asset ID</th>
                     <th>Model</th>
-                    <th>resource asset number</th>
+                    <th>Resource asset number</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -122,8 +119,6 @@
                 </tbody>
             </table>
         </div>
-
-
     </main>
 </section>
 {% endblock %}

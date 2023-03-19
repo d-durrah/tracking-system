@@ -19,7 +19,8 @@ def resourceSignOutForm(request):
         if form.is_valid():
             # get the asset
             r_num = form.cleaned_data.get('asset_ID')
-            asset = Asset.objects.get(id=r_num.id)
+            asset = Asset.objects.get(asset_id=r_num)
+            print(asset)
 
             # get resource_asset_number & model
             num = asset.resource_asset_number
@@ -27,6 +28,7 @@ def resourceSignOutForm(request):
 
             # update asset availability
             asset.available_to_borrow = False
+            print("Available to borrow set to False")
             asset.save()
 
             # save to loan database
