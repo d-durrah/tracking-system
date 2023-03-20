@@ -69,7 +69,7 @@ def sync_miradore():
             else:
                 device_id += 1
                 continue
-            print(f"Model: {model}")
+            # print(f"Model: {model}")
 
             # find manufacturer element
             manufacturer_element = root.find('Items/Device/InvDevice/Manufacturer')
@@ -78,7 +78,7 @@ def sync_miradore():
             else:
                 device_id += 1
                 continue
-            print(f"Manufacturer: {manufacturer}")
+            # print(f"Manufacturer: {manufacturer}")
 
             # find email element
             email_element = root.find('Items/Device/User/Email')
@@ -87,7 +87,7 @@ def sync_miradore():
             else:
                 device_id += 1
                 continue
-            print(f"Email: {email}")
+            # print(f"Email: {email}")
 
             # find last name element
             last_name_element = root.find('Items/Device/User/Lastname')
@@ -96,7 +96,7 @@ def sync_miradore():
             else:
                 device_id += 1
                 continue
-            print(f"Last Name: {last_name}")
+            # print(f"Last Name: {last_name}")
 
             # find first name element
             first_name_element = root.find('Items/Device/User/Firstname')
@@ -105,7 +105,7 @@ def sync_miradore():
             else:
                 device_id += 1
                 continue
-            print(f"First Name: {first_name}")
+            # print(f"First Name: {first_name}")
 
             # add the retrieved information to the database
             asset = Asset.objects.filter(asset_id=device_id).first()

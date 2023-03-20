@@ -1,3 +1,4 @@
+from datetime import date
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -20,7 +21,7 @@ def resourceSignOutForm(request):
             # get the asset
             r_num = form.cleaned_data.get('asset_ID')
             asset = Asset.objects.get(asset_id=r_num)
-            print(asset)
+            # print(asset)
 
             # get resource_asset_number & model
             num = asset.resource_asset_number
@@ -28,7 +29,7 @@ def resourceSignOutForm(request):
 
             # update asset availability
             asset.available_to_borrow = False
-            print("Available to borrow set to False")
+            # print("Available to borrow set to False")
             asset.save()
 
             # save to loan database
@@ -79,3 +80,24 @@ def signatureForm(request):
         form = SignatureForm(initial={'log_id': request.GET.get('log')})
 
     return render(request, 'frontend/submit_signature.html', {'form': form})
+@login_required(login_url='accounts:login')
+def returnAsset(request):
+    # get log record
+    num = request.POST.get('asset')
+    log = Log.objects.get(pk=num)
+
+    # add return date
+    log.returned = True
+    log.returned_on = date.today()
+    log.save()
+
+    # make asset available to borrow
+    asset = Asset.objects.get(asset_id=log.asset_ID)
+    asset.available_to_borrow = True
+    asset.save()
+
+    # send message
+    messages.info(request, f'Asset ID {log.asset_ID} has been returned.')
+
+    # redirect to index page
+    return redirect("frontend:index")

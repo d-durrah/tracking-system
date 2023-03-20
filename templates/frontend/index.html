@@ -63,6 +63,19 @@
         background: #ffb600;
         margin-bottom: 25px;
     }
+
+    input {
+        background-color: #004DB1;
+        color: white;
+        padding: 2%;
+        border: 1px solid #004DB1;
+    }
+
+    input:hover {
+        background-color: #ffb600;
+        color: black;
+        cursor: pointer;
+    }
 </style>
 {% endblock %}
 
@@ -85,16 +98,29 @@
                 <tr>
                     <th>Asset ID</th>
                     <th>Model</th>
+                    <th>Resource asset number</th>
                     <th>Borrow Date</th>
+                    <th>Return Date</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for log in logs %}
+                {% if log.returned == False %}
                 <tr>
-                    <td>{{ log.asset_ID }}</td>
+                    <td><a href="https://datasafely.online.miradore.com/Device/{{ log.asset_ID }}">{{ log.asset_ID }}</a></td>
                     <td>{{ log.model }}</td>
+                    <td>{{ log.resource_asset_number }}</td>
                     <td>{{ log.borrow_date }}</td>
+                    <td>{{ log.return_date }}</td>
+                    <td>
+                        <form action="{% url 'frontend:return' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="asset" value="{{ log.id }}">
+                            <input type="submit" value="Return">
+                        </form>
+                    </td>
                 </tr>
+                {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
@@ -111,7 +137,7 @@
                 <tbody>
                 {% for asset in assets %}
                 <tr>
-                    <td>{{ asset.asset_id }}</td>
+                    <td><a href="https://datasafely.online.miradore.com/Device/{{ asset.asset_id }}">{{ asset.asset_id }}</a></td>
                     <td>{{ asset.model }}</td>
                     <td>{{ asset.resource_asset_number }}</td>
                 </tr>
