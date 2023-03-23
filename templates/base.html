@@ -18,7 +18,7 @@
 <body>
 <div class="sidebar open">
     <div class="logo-details">
-        <img class="icon" src="{% static 'images/logo.png' %}" style="width: 50%;">
+        <center><img class="icon" src="{% static 'images/logo.png' %}" style="width: 70%;"></center>
         <div class="logo_name">CCIT Mobile Assets Tracking System</div>
     </div>
     <ul class="nav-list">
@@ -28,7 +28,6 @@
                 <i class='bx bx-home'></i>
                 <span class="links_name">Dashboard</span>
             </a>
-            <span class="tooltip">Dashboard</span>
         </li>
         <!--IT Help page-->
         <li>
@@ -36,7 +35,6 @@
                 <i class='bx bx-user-voice'></i>
                 <span class="links_name">IT Help</span>
             </a>
-            <span class="tooltip">IT Help</span>
         </li>
         <!--Form-->
         <li>
@@ -44,7 +42,6 @@
                 <i class='bx bx-grid-alt'></i>
                 <span class="links_name">Resource sign-out form</span>
             </a>
-            <span class="tooltip">Resource sign-out form</span>
         </li>
         <!--Admin page-->
         {% if request.user.is_superuser %}
@@ -53,7 +50,6 @@
                 <i class='bx bx-user-check'></i>
                 <span class="links_name">Admin page</span>
             </a>
-            <span class="tooltip">Admin page</span>
         </li>
         {% endif %}
         <!--Logout-->
@@ -62,7 +58,6 @@
                 <i class='bx bx-log-out'></i>
                 <span class="links_name">Log out</span>
             </a>
-            <span class="tooltip">Log out</span>
         </li>
     </ul>
 </div>

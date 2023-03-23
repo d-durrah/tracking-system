@@ -45,6 +45,9 @@ def resourceSignOutForm(request):
             )
             log.save()
 
+            # send message
+            messages.info(request, 'Generate PDF for the signature sheet, or cancel request.')
+
             # redirect to generate pdf page
             return HttpResponseRedirect(reverse("frontend:pdf") + '?' + 'log=' + str(log.id))
 

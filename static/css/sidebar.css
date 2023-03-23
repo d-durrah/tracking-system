@@ -13,7 +13,6 @@
     left: 0;
     top: 0;
     height: 100%;
-    width: 78px;
     background: #004DB1;
     padding: 6px 14px;
     z-index: 99;
@@ -21,12 +20,11 @@
 }
 
 .sidebar.open {
-    width: 250px;
+    width: 200px;
 }
 
 .sidebar .logo-details {
-    display: flex;
-    align-items: center;
+    display: block;
     position: relative;
 }
 
@@ -37,9 +35,9 @@
 
 .sidebar .logo-details .logo_name {
     color: #fff;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 400;
-    text-align: left;
+    text-align: center;
     opacity: 0;
     transition: all 0.5s ease;
 }
@@ -86,35 +84,6 @@
     list-style: none;
 }
 
-.sidebar li .tooltip {
-    position: absolute;
-    top: -20px;
-    left: calc(100% + 15px);
-    z-index: 3;
-    background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 15px;
-    font-weight: 400;
-    opacity: 0;
-    white-space: nowrap;
-    pointer-events: none;
-    transition: 0s;
-}
-
-.sidebar li:hover .tooltip {
-    opacity: 1;
-    pointer-events: auto;
-    transition: all 0.6s ease;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.sidebar.open li .tooltip {
-    display: none;
-}
-
 .sidebar input {
     font-size: 15px;
     color: #000;
@@ -147,12 +116,13 @@
 
 .sidebar li a .links_name {
     color: #000;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
-    white-space: nowrap;
     opacity: 0;
     pointer-events: none;
     transition: all 0.7s ease;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .sidebar.open li a .links_name {
@@ -190,8 +160,8 @@
 }
 
 .sidebar.open ~ .home-section {
-    left: 250px;
-    width: calc(100% - 250px);
+    left: 200px;
+    width: calc(100% - 200px);
 }
 
 .home-section .text {

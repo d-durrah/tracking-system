@@ -112,7 +112,7 @@
                     <td>{{ log.resource_asset_number }}</td>
                     <td>{{ log.borrow_date }}</td>
                     <td>{{ log.return_date }}</td>
-                    <td>
+                    <td style="border: transparent;">
                         <form action="{% url 'frontend:return' %}" method="POST">
                             {% csrf_token %}
                             <input type="hidden" name="asset" value="{{ log.id }}">

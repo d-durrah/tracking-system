@@ -11,11 +11,13 @@
 <script src="https://cdn.jsdelivr.net/npm/jspdf-html2canvas@latest/dist/jspdf-html2canvas.min.js"></script>
 
 <style>
-    #container {
+    .container {
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 20px;
         margin: 0 auto;
+        margin-top: 2%;
+        margin-bottom: 2%;
         width: 50%;
     }
 
@@ -24,7 +26,7 @@
         justify-content: space-evenly;
     }
 
-    input[type=submit], #pdfButton {
+    #cancelButton, #pdfButton {
         width: 45%;
         background-color: #004DB1;
         color: white;
@@ -35,24 +37,67 @@
         cursor: pointer;
     }
 
-    input[type=submit]:hover, #pdfButton:hover {
+    #cancelButton:hover, #pdfButton:hover {
         background-color: #3875d7;
     }
 
-    #messages-container p {
-        color: darkgoldenrod;
-    }
-
     .box {
-        width: 100%;
+        width: 95%;
         height: 75px;
         background: lightgray;
         border: 1px dotted black;
         justify-items: center;
     }
 
-    #sig {
-        display: none;
+    page[size="A4"] {
+        background: white;
+        width: 21cm;
+        height: 29.7cm;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    }
+
+    .pdf_content {
+        text-align: left;
+    }
+
+    .logo_content {
+        margin: 0 auto;
+        background-color: #004DB1;
+        color: white;
+        display: flex;
+    }
+
+    .logo_content img {
+        width: 10%;
+    }
+
+    .logo_content .logo_title {
+        margin-left: 30%;
+        padding-top: 2%
+    }
+
+    .sig-container {
+        display: flex;
+    }
+
+    .container-1 {
+        width: 45%;
+    }
+
+    .container-2 {
+        width: 45%;
+    }
+
+    .footer {
+        position: absolute;
+        width: 21cm;
+        bottom: 0;
+        border-top: 1px solid black;
+        justify-items: center;
+        padding: 2%;
     }
 </style>
 {% endblock %}
@@ -60,40 +105,73 @@
 
 {% block content %}
 <section class="home-section">
-    <!--Message-->
-    {% if messages %}
-    <div id="messages-container">
-        {% for message in messages %}
-        <p><span>&#10004;</span>{{message}}</p>
-        {% endfor %}
-    </div>
-    {% endif %}
-    <!-- Page content-->
-    <div id="generatePdf">
-        <div class="text">Resource Sign-out Form</div>
-        <main>
-            <div id="container">
-                <p><b>ID number:</b> {{ ID_number }}</p><br>
-                <p><b>Resource asset number:</b> {{ resource_asset_number }}</p><br>
-                <p><b>Item description:</b> {{ item_description }}</p><br>
-                <p><b>Purpose:</b> {{ purpose }}</p><br>
-                <p><b>Borrow date:</b> {{ borrow_date }}</p><br>
-                <p><b>Return date:</b> {{ return_date }}</p><br>
-                <div id="sig">
-                    <p><b>Asset recipient:</b></p><br>
-                    <div class="box"></div>
-                    <br>
-                    <p><b>Supervisor:</b></p><br>
-                    <div class="box"></div>
-                    <br>
-                    <p><b>Dean:</b></p><br>
-                    <div class="box"></div>
-                    <br>
+    <main class="container">
+        <p>Click on the generate PDF button to download the sheet shown below, or cancel request.</p>
+        <div id="buttons">
+            <input id="pdfButton" type="button" value="Generate PDF">
+            <input id="cancelButton" type="button" value="Cancel">
+        </div>
+    </main>
+    <!-- PDF content -->
+    <page size="A4" id="generatePdf">
+        {% load static %}
+        <div class="pdf_content">
+            <div class="logo_content">
+                <img src="{% static 'images/logo.png' %}">
+                <div class="logo_title">
+                    <h1>College of Computing & IT</h1>
+                    <h2>Resource Sign-out Sheet</h2>
                 </div>
-                <input id="pdfButton" type="button" value="Generate PDF" data-html2canvas-ignore="true">
             </div>
-        </main>
-        <div>
+            <p><b>ID number:</b> {{ ID_number }}</p><br>
+            <p><b>Resource asset number:</b> {{ resource_asset_number }}</p><br>
+            <p><b>Item description:</b> {{ item_description }}</p><br>
+            <p><b>Purpose:</b> {{ purpose }}</p><br>
+            <p><b>Borrow date:</b> {{ borrow_date }}</p><br>
+            <p><b>Return date:</b> {{ return_date }}</p><br>
+            <div class="sig-container">
+                <div class="container-1">
+                    <p><b>Asset recipient signature:</b></p><br>
+                    <div class="box"></div>
+                </div>
+                <div class="container-2">
+                    <p><b>Signature date:</b></p><br>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <br>
+            <div class="sig-container">
+                <div class="container-1">
+                    <p><b>Supervisor signature:</b></p><br>
+                    <div class="box"></div>
+                </div>
+                <div class="container-2">
+                    <p><b>Signature date:</b></p><br>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <br>
+            <div class="sig-container">
+                <div class="container-1">
+                    <p><b>Dean signature:</b></p><br>
+                    <div class="box"></div>
+                </div>
+                <div class="container-2">
+                    <p><b>Signature date:</b></p><br>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <br>
+            <div class="footer">
+                <p>
+                    Phone: +974 4495 2222<br>
+                    Email: info@udst.edu.qa<br>
+                    P.O. Box: 24449, Doha - Qatar<br>
+                    <b style="color: #004DB1;">udst.edu.qa</b>
+                </p>
+            </div>
+        </div>
+    </page>
 </section>
 {% endblock %}
 
@@ -102,10 +180,10 @@
 <script>
     const button = document.getElementById("pdfButton");
     const page = document.getElementById("generatePdf");
-    const element = document.getElementById("sig");
+    const element = document.getElementsByTagName("page");
 
     button.addEventListener('click', function () {
-        $(element).css("display", "block");
+        $(element).css("margin-left", "0");
         html2PDF(page, {
             jsPDF: {
                 format: 'a4',
@@ -113,7 +191,7 @@
             imageType: 'image/jpeg',
             output: 'ResourceSignOutForm.pdf'
         });
-        $(element).css("display", "none");
+        $(element).css("margin-left", "");
         window.setTimeout(function() {
             window.location.href = "{% url 'frontend:sig' %}?log={{ log_id }}";
         }, 1000);
