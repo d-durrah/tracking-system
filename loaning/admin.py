@@ -7,8 +7,8 @@ from django.urls import path
 
 
 class AdminLog(admin.ModelAdmin):
-    list_display = ['id', 'asset_ID', 'resource_asset_number', 'borrow_date', 'return_date', 'returned']
-    list_filter = ['asset_ID', 'borrow_date', 'return_date', 'returned']
+    list_display = ['id', 'asset_ID', 'resource_asset_number', 'sign_out_date', 'return_date', 'returned']
+    list_filter = ['asset_ID', 'sign_out_date', 'return_date', 'returned']
 
 
 class AdminSignature(admin.ModelAdmin):

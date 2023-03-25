@@ -49,22 +49,14 @@ function validateUsername() {
 
 function validateEmail() {
     let email = document.forms['register']['id_email'];
-    let username = document.forms['register']['id_username'];
-    let emailID = email.value.trim().slice(0, 8)
-    let emailDomain = 'udst.edu.qa'
-    let emailDomainValue = email.value.trim().slice(9, 21)
-    if (isNaN(emailID)) {
-        errorMessageDisplay(email, 'email-error-message', 'Your email should start with your ID');
-        return false;
-    } else if (emailID !== username.value.trim()) {
-        errorMessageDisplay(email, 'email-error-message', 'Your email ID should match your employee ID');
-        return false;
-    } else if (emailDomainValue !== emailDomain) {
-        errorMessageDisplay(email, 'email-error-message', `Your email should end with \'@${emailDomain}\'`);
+    let emailValue = email.value.trim();
+    let emailDomain = '@udst.edu.qa';
+    if (!emailValue.endsWith(emailDomain)) {
+        errorMessageDisplay(email, 'email-error-message', `Your email should end with '${emailDomain}'`);
         return false;
     } else {
-        errorMessageRemove(email, 'email-error-message')
-        return true
+        errorMessageRemove(email, 'email-error-message');
+        return true;
     }
 }
 

@@ -99,7 +99,7 @@
                     <th>Asset ID</th>
                     <th>Model</th>
                     <th>Resource asset number</th>
-                    <th>Borrow Date</th>
+                    <th>Sign-out Date</th>
                     <th>Return Date</th>
                 </tr>
                 </thead>
@@ -110,7 +110,7 @@
                     <td><a href="https://datasafely.online.miradore.com/Device/{{ log.asset_ID }}">{{ log.asset_ID }}</a></td>
                     <td>{{ log.model }}</td>
                     <td>{{ log.resource_asset_number }}</td>
-                    <td>{{ log.borrow_date }}</td>
+                    <td>{{ log.sign_out_date }}</td>
                     <td>{{ log.return_date }}</td>
                     <td style="border: transparent;">
                         <form action="{% url 'frontend:return' %}" method="POST">

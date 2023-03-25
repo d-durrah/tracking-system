@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import index, generatePDF, showCurrent, showAvailable
+from .views import index, generatePDF, showCurrent, showAvailable, cancelSignOut
 from loaning.views import resourceSignOutForm, signatureForm, returnAsset
 
 app_name = 'frontend'
@@ -22,6 +22,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('form', resourceSignOutForm, name='form'),
     path('form/generate-pdf', generatePDF, name='pdf'),
+    path('form/cancel', cancelSignOut, name='cancel'),
     path('form/generate-pdf/upload-signature', signatureForm, name='sig'),
     path('current-loans', showCurrent, name='current'),
     path('available-assets', showAvailable, name='available'),

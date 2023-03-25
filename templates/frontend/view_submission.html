@@ -123,15 +123,17 @@
                     <h2>Resource Sign-out Sheet</h2>
                 </div>
             </div>
-            <p><b>ID number:</b> {{ ID_number }}</p><br>
+            <p><b>Employee ID:</b> {{ employee_ID }}</p><br>
+            <p><b>Name:</b> {{ name }}</b></p><br>
+            <p><b>Email:</b> {{ email }}</b></p><br>
             <p><b>Resource asset number:</b> {{ resource_asset_number }}</p><br>
             <p><b>Item description:</b> {{ item_description }}</p><br>
             <p><b>Purpose:</b> {{ purpose }}</p><br>
-            <p><b>Borrow date:</b> {{ borrow_date }}</p><br>
+            <p><b>Sign-out date:</b> {{ sign_out_date }}</p><br>
             <p><b>Return date:</b> {{ return_date }}</p><br>
             <div class="sig-container">
                 <div class="container-1">
-                    <p><b>Asset recipient signature:</b></p><br>
+                    <p><b>{{ name }} signature:</b></p><br>
                     <div class="box"></div>
                 </div>
                 <div class="container-2">
@@ -197,5 +199,9 @@
         }, 1000);
     });
 
+    const cancelButton = document.getElementById("cancelButton");
+    cancelButton.addEventListener('click', function () {
+        window.location.href = "{% url 'frontend:cancel' %}?log={{ log_id }}";
+    });
 </script>
 {% endblock %}

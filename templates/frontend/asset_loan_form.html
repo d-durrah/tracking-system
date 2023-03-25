@@ -62,13 +62,12 @@
                 <form action="{% url 'frontend:form' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="input">
-                        {{ form.ID_number.label }}:
-                        {{ form.ID_number }}
-                    </div>
-                    <span class="error">{{ form.errors.ID_number | striptags }}</span><br>
+                        Employee ID:
+                        {{ form.employee_ID }}
+                    </div><br>
                     <div class="input">
-                        {{ form.asset_ID.label }}:
-                        {{ form.asset_ID }}
+                        {{ form.resource_asset_number.label }}:
+                        {{ form.resource_asset_number }}
                     </div>
                     <br>
                     <div class="input">
@@ -77,8 +76,8 @@
                     </div>
                     <br>
                     <div class="input">
-                        {{ form.borrow_date.label }}:
-                        {{ form.borrow_date }}
+                        {{ form.sign_out_date.label }}:
+                        {{ form.sign_out_date }}
                     </div>
                     <br>
                     <div class="input">

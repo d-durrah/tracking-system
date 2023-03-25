@@ -3,8 +3,8 @@ from datetime import date, datetime
 
 
 class Asset(models.Model):
-    asset_id = models.CharField(max_length=100, null=False)
-    resource_asset_number = models.CharField(max_length=255, null=True)
+    asset_id = models.CharField(max_length=100, null=False, unique=True)
+    resource_asset_number = models.CharField(max_length=255, null=True, unique=True)
     model = models.CharField(max_length=255, null=False)
     manufacturer = models.CharField(max_length=255, null=False)
     first_name = models.CharField(max_length=100, null=False)
@@ -16,7 +16,7 @@ class Asset(models.Model):
     available_to_borrow = models.BooleanField(default=True)
 
     def __str__(self):
-        return str(self.asset_id)
+        return str(self.resource_asset_number)
 
     class Meta:
         verbose_name = "CCIT Asset"

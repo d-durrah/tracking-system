@@ -4,13 +4,14 @@ from management.models.add_asset import Asset
 
 
 class Log(models.Model):
-    asset_ID = models.ForeignKey(Asset, limit_choices_to={'available_to_borrow': True},
-                                              on_delete=models.CASCADE)
-    resource_asset_number = models.TextField(null=False)
-    model = models.TextField(null=False)
+    asset_ID = models.IntegerField(null=False)
+    resource_asset_number = models.CharField(max_length=255, null=False)
+    model = models.CharField(max_length=255, null=False)
     purpose = models.TextField(null=False)
-    ID_number = models.CharField(max_length=8, null=False)
-    borrow_date = models.DateField(default=date.today, null=False)
+    employee_ID = models.CharField(max_length=8, null=False)
+    name = models.CharField(max_length=255, null=False)
+    email = models.CharField(max_length=255, null=False)
+    sign_out_date = models.DateField(default=date.today, null=False)
     return_date = models.DateField(default=date.today, null=False)
     returned = models.BooleanField(default=False)
     returned_on = models.DateField(null=True)
