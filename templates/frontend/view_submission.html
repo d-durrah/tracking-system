@@ -42,7 +42,7 @@
     }
 
     .box {
-        width: 95%;
+        width: 80%;
         height: 75px;
         background: lightgray;
         border: 1px dotted black;
@@ -70,6 +70,11 @@
         display: flex;
     }
 
+    .logo_content > img {
+        image-resolution: 300dpi;
+        image-rendering: crisp-edges;
+    }
+
     .logo_content img {
         width: 10%;
     }
@@ -95,10 +100,33 @@
         position: absolute;
         width: 21cm;
         bottom: 0;
-        border-top: 1px solid black;
-        justify-items: center;
-        padding: 2%;
     }
+
+    .footer > img {
+        width: 21cm;
+        object-fit: contain;
+        image-resolution: 300dpi;
+        image-rendering: crisp-edges;
+    }
+
+    .pdf_content > p {
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .sig-all {
+        position: absolute;
+        bottom: 150px;
+        width: 84%;
+        margin-left: 5px;
+    }
+     .line {
+         margin-left: 5px;
+         width: 20.7cm;
+         height: 5px;
+         border-bottom: 1px solid black;
+     }
 </style>
 {% endblock %}
 
@@ -128,49 +156,48 @@
             <p><b>Email:</b> {{ email }}</b></p><br>
             <p><b>Resource asset number:</b> {{ resource_asset_number }}</p><br>
             <p><b>Item description:</b> {{ item_description }}</p><br>
-            <p><b>Purpose:</b> {{ purpose }}</p><br>
+            <p style="word-wrap: break-word; border-bottom: 1px solid black;"><b>Purpose:</b> {{ purpose }}</p><br>
+            <div class="line"></div><br>
+            <div class="line"></div><br>
             <p><b>Sign-out date:</b> {{ sign_out_date }}</p><br>
             <p><b>Return date:</b> {{ return_date }}</p><br>
-            <div class="sig-container">
-                <div class="container-1">
-                    <p><b>{{ name }} signature:</b></p><br>
-                    <div class="box"></div>
+            <div class="sig-all">
+                <div class="sig-container">
+                    <div class="container-1">
+                        <p><b>{{ name }} signature:</b></p><br>
+                        <div class="box"></div>
+                    </div>
+                    <div class="container-2">
+                        <p><b>Signature date:</b></p><br>
+                        <div class="box"></div>
+                    </div>
                 </div>
-                <div class="container-2">
-                    <p><b>Signature date:</b></p><br>
-                    <div class="box"></div>
+                <br>
+                <div class="sig-container">
+                    <div class="container-1">
+                        <p><b>Supervisor signature:</b></p><br>
+                        <div class="box"></div>
+                    </div>
+                    <div class="container-2">
+                        <p><b>Signature date:</b></p><br>
+                        <div class="box"></div>
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="sig-container">
-                <div class="container-1">
-                    <p><b>Supervisor signature:</b></p><br>
-                    <div class="box"></div>
-                </div>
-                <div class="container-2">
-                    <p><b>Signature date:</b></p><br>
-                    <div class="box"></div>
-                </div>
-            </div>
-            <br>
-            <div class="sig-container">
-                <div class="container-1">
-                    <p><b>Dean signature:</b></p><br>
-                    <div class="box"></div>
-                </div>
-                <div class="container-2">
-                    <p><b>Signature date:</b></p><br>
-                    <div class="box"></div>
+                <br>
+                <div class="sig-container">
+                    <div class="container-1">
+                        <p><b>Dean signature:</b></p><br>
+                        <div class="box"></div>
+                    </div>
+                    <div class="container-2">
+                        <p><b>Signature date:</b></p><br>
+                        <div class="box"></div>
+                    </div>
                 </div>
             </div>
             <br>
             <div class="footer">
-                <p>
-                    Phone: +974 4495 2222<br>
-                    Email: info@udst.edu.qa<br>
-                    P.O. Box: 24449, Doha - Qatar<br>
-                    <b style="color: #004DB1;">udst.edu.qa</b>
-                </p>
+                <img src="{% static 'images/footer.jpg' %}">
             </div>
         </div>
     </page>

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Asset {{ id }} information</title>
+{% endblock %}
+
+{% block formstyling %}
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+<!-- Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+
+<style>
+    main {
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    h1 {
+        background: #ffb600;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+
+    #map {
+        margin-bottom: 5%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="home-section">
+    <h1>Asset {{ id }}</h1>
+    <!-- Page content -->
+    <main>
+        {% if resource_asset_number %}
+        <b>Resource asset number:</b> {{ resource_asset_number }} <br>
+        {% endif %}
+
+        {% if model %}
+        <b>Model:</b> {{ model }} <br>
+        {% endif %}
+
+        {% if manufacturer %}
+        <b>Manufacturer:</b> {{ manufacturer }}<br>
+        {% endif %}
+
+        {% if software %}
+        <b>Software:</b> {{ software }}<br>
+        {% endif %}
+
+        {% if serial %}
+        <b>Serial Number:</b> {{ serial }}<br>
+        {% endif %}
+
+        {% if status %}
+        <b>Status:</b> {{ status }} <br>
+        {% endif %}
+
+        {% if last_reported %}
+        <b>Last Reported:</b> {{ last_reported }}<br>
+        {% endif %}
+
+        {% if location %}
+        <b>Location:</b> {{ location }} <br>
+        {% endif %}
+
+        {% if longitude is not None and longitude != '' and latitude is not None and latitude != '' %}
+        <div id="map" style="height: 400px;margin-top: 2%;"></div>
+        {% endif %}
+    </main>
+</section>
+{% endblock %}
+
+{% block script %}
+<script>
+    // initialize the map
+    var map = L.map('map').setView([{{ latitude }}, {{ longitude }}], 13);
+
+    // add a tile layer
+    L.tileLayer('https://maptiles.p.rapidapi.com/en/map/v1/{z}/{x}/{y}.png?rapidapi-key=ec74d331e0msh4c45ca11cc48e8bp13df2cjsn2f13c82bdefc', {
+        maxZoom: 200,
+    }).addTo(map);
+
+    // add a marker at the device's location
+    var marker = L.marker([{{ latitude }}, {{ longitude }}]).addTo(map);
+</script>
+{% endblock %}

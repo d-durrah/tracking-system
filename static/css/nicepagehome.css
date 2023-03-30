@@ -6833,7 +6833,7 @@ section.u-image:not(.u-hover-box),
 }
 .u-sheet {
   position: relative;
-  margin-left: 150px;
+  margin: 0 auto;
 }
 .u-xl-mode .u-sheet {
   width: var(--theme-sheet-width-xl);
@@ -41494,21 +41494,9 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-header .u-text-1 {
   font-size: 2.25rem;
   font-weight: 700;
-  margin: 10px auto 0;
+  margin: 10px auto;
 }
 
-.u-header .u-btn-1 {
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  letter-spacing: 1px;
-  margin: -51px auto 19px -107px;
-}
-@media (max-width: 1199px) {
-  .u-header .u-btn-1 {
-    margin-left: 0;
-  }
-}
 
 
 

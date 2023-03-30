@@ -1,42 +1,42 @@
-<!DOCTYPE html>
-<html style="font-size: 16px;" lang="en"><head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <title>ios manual page</title>
-    <link rel="stylesheet" href="../../static/css/nicepage.css" media="screen">
-<link rel="stylesheet" href="../../static/css/ios-manual-page.css" media="screen">
-    <script class="u-script" type="text/javascript" src="../../static/js/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="../../static/js/nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 5.6.2, nicepage.com">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    
-    
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": ""
-}</script>
-    <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="ios manual page">
-    <meta property="og:type" content="website">
-  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body class="u-body u-xl-mode" data-lang="en"><header class="u-header" id="sec-42c0" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""><div class="u-clearfix u-sheet u-sheet-1">
-    <div style="margin-left:-35px;">
-      ← <a href="{% url 'user_manual:home' %}" >Back to IT Help</a>
-    </div>
-    <p class="u-text u-text-default u-text-1">User Manual</p>
-      </div></header>
-    <section class="u-clearfix u-section-1" id="sec-0962">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <h4 class="u-align-center u-text u-text-1">
-          <span class="u-text-palette-5-dark-1">IOS</span>
-          <span style="font-weight: 400;">Manual</span>
-        </h4>
-        <h5 class="u-align-center u-text u-text-2"> DEVICE ENROLLMENT (ADDING DEVICES)</h5>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>iOS manual</title>
+{% endblock %}
+
+{% block formstyling %}
+<style>
+    h1 {
+        background: #ffb600;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+
+    h2, h5 {
+      font-size: 16px;
+    }
+
+    h2, h5, p {
+      line-height: 2;
+    }
+
+    main {
+      text-align: left;
+      margin-left: 2%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="home-section">
+  <h1>iOS manual</h1>
+  <main>
+    <h5 class="u-align-center u-text u-text-2"> Device Enrollment </h5>
         <p class="u-align-center u-text u-text-3">
-          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" href="https://www.miradore.com/knowledge/ios/ios-device-management/https://www.miradore.com/knowledge/ios/ios-device-management/" target="_blank">Miradore - iOS device management</a>
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" href="https://www.miradore.com/knowledge/ios/ios-device-management/" target="_blank">Miradore - iOS device management</a>
         </p>
         <p class="u-align-center u-text u-text-4">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-2" href="https://www.miradore.com/knowledge/ios/supervised-mode-for-ios-devices/" target="_blank">Miradore - Supervised mode for iOS devices</a>
@@ -45,9 +45,9 @@
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3" href="https://www.miradore.com/knowledge/ios/manual-ios-device-enrollment/" target="_blank">Miradore - Manual iOS device enrollment</a>
         </p>
         <p class="u-align-center u-text u-text-6">
-          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-4" href="https://www.miradore.com/knowledge/ios/enrollment-instructions-for-ios-device-users/enrollment" target="_blank">Miradore - instructions for iOS device users</a>
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-4" href="https://www.miradore.com/knowledge/ios/enrollment-instructions-for-ios-device-users/" target="_blank">Miradore - Instructions for iOS device users</a>
         </p>
-        <h5 class="u-align-center u-text u-text-7"> DEVICE DATA &amp; CONFIGURATION</h5>
+        <h5 class="u-align-center u-text u-text-7"> Device Data & Configuration </h5>
         <p class="u-align-center u-text u-text-8">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-5" href="https://www.miradore.com/knowledge/ios/how-to-change-a-user-for-an-ios-device/" target="_blank">Miradore - How to change a user for an iOS device</a>
         </p>
@@ -84,7 +84,7 @@
         <p class="u-align-center u-text u-text-19">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-16" href="https://www.miradore.com/knowledge/ios/remotely-clearing-device-passcode/" target="_blank">Miradore - Remotely clearing the device passcode</a>
         </p>
-        <h5 class="u-align-center u-text u-text-20"> APPLICATION MANAGEMENT</h5>
+        <h5 class="u-align-center u-text u-text-20"> Application Management </h5>
         <p class="u-align-center u-text u-text-21">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-17" href="https://www.miradore.com/knowledge/ios/application-management/" target="_blank">Miradore - Application management and deployment for iOS</a>
         </p>
@@ -109,12 +109,11 @@
         <p class="u-align-center u-text u-text-28">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-24" href="https://www.miradore.com/knowledge/ios/software-update-for-ios/" target="_blank">Miradore - How to update iPhones and iPads to the latest iOS version?</a>
         </p>
-        <h5 class="u-align-center u-text u-text-29">TROUBLESHOOTING</h5>
+        <h5 class="u-align-center u-text u-text-29">Troubleshooting</h5>
         <p class="u-align-center u-text u-text-30">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-25" href="https://www.miradore.com/knowledge/ios/troubleshooting-ios-app-installations/" target="_blank">Miradore - Troubleshooting iOS app installations</a>
         </p>
-        <h5 class="u-align-center u-text u-text-31">MacOS</h5>
-        <h5 class="u-align-center u-text u-text-32"> DEVICE ENROLLMENT (ADDING DEVICES)</h5>
+        <h5 class="u-align-center u-text u-text-31">MacOS Device Enrollment</h5>
         <p class="u-align-center u-text u-text-33">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-26" href="https://www.miradore.com/knowledge/macos/macos-device-management/" target="_blank">Miradore - MacOS device management</a>
         </p>
@@ -124,13 +123,6 @@
         <p class="u-align-center u-text u-text-35">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-28" href="https://www.miradore.com/knowledge/macos/enrollment-instructions-for-mac-users/" target="_blank">Miradore - Enrollment instructions for Mac users</a>
         </p>
-      </div>
-    </section>
-    
-    
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-d3e8"><div class="u-clearfix u-sheet u-sheet-1"></div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-
-    </section>
-  
-</body></html>
+  </main>
+</section>
+{% endblock %}

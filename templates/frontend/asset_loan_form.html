@@ -3,21 +3,33 @@
 {% load static %}
 
 {% block title %}
-<title>Resource Sign-out Form</title>
+<title>Resource Sign Out form</title>
 {% endblock %}
 
 {% block formstyling %}
 <style>
-    #container {
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        padding: 20px;
+    .myForm {
         margin: 0 auto;
         width: 50%;
+        display: grid;
+        grid-template-columns: [labels] auto [controls];
+        grid-auto-flow: row;
+    }
+
+    .myForm > .label {
+        grid-column: labels;
+        grid-row: auto;
+    }
+
+    .myForm > .input {
+        grid-column: controls;
+        grid-row: auto;
+        border: none;
+        padding: 0.5em;
     }
 
     input[type=submit] {
-        width: 100%;
+        width: 25%;
         background-color: #004DB1;
         color: white;
         padding: 14px 20px;
@@ -37,6 +49,13 @@
         justify-content: space-evenly;
     }
 
+    h1 {
+        background: #ffb600;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+
     .error {
         color: red;
         font-size: 15px;
@@ -45,49 +64,39 @@
         align-items: center;
     }
 
-    h1 {
-        background: #ffb600;
-        margin-bottom: 40px;
-        font-weight: bold;
+    textarea {
+        resize: none;
+        width: 250px;
+        height: 150px;
     }
 </style>
 {% endblock %}
 
 {% block content %}
     <section class="home-section">
-        <h1>Resource Sign-out Form</h1>
+        <h1>Resource Sign Out form</h1>
         <!-- Page content -->
-        <main>
-            <div id="container">
-                <form action="{% url 'frontend:form' %}" method="POST" enctype="multipart/form-data">
+                <form action="{% url 'frontend:form' %}" method="POST" enctype="multipart/form-data" class="myForm">
                     {% csrf_token %}
+                    <div class="label">Employee ID:</div>
+                    <div class="input">{{ form.employee_ID }}</div>
+
+                    <div class="label">{{ form.resource_asset_number.label }}:</div>
+                    <div class="input">{{ form.resource_asset_number }}</div>
+
+                    <div class="label">{{ form.purpose.label }}:</div>
                     <div class="input">
-                        Employee ID:
-                        {{ form.employee_ID }}
-                    </div><br>
-                    <div class="input">
-                        {{ form.resource_asset_number.label }}:
-                        {{ form.resource_asset_number }}
+                        <textarea name="{{ form.purpose.name }}" cols="{{ form.purpose.cols }}" rows="{{ form.purpose.rows }}"></textarea>
                     </div>
-                    <br>
-                    <div class="input">
-                        {{ form.purpose.label }}:
-                        {{ form.purpose }}
-                    </div>
-                    <br>
-                    <div class="input">
-                        {{ form.sign_out_date.label }}:
-                        {{ form.sign_out_date }}
-                    </div>
-                    <br>
-                    <div class="input">
-                        {{ form.return_date.label }}:
-                        {{ form.return_date }}
-                    </div>
-                    <span class="error">{{ form.return_date.errors | striptags }}</span><br>
-                        <input type="submit" value="Submit">
+
+                    <div class="label">{{ form.sign_out_date.label }}:</div>
+                    <div class="input">{{ form.sign_out_date }}</div>
+
+                    <div class="label">{{ form.return_date.label }}:</div>
+                    <div class="input">{{ form.return_date }}</div>
+
+                    <span class="error input">{{ form.return_date.errors | striptags }}</span>
+                    <input class="input" type="submit" value="Submit">
                 </form>
-            </div>
-        </main>
     </section>
 {% endblock %}

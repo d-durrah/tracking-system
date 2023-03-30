@@ -29,7 +29,9 @@ DEBUG = True
 
 USE_DJANGO_JQUERY = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+
+]
 
 
 # Application definition

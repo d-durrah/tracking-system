@@ -19,7 +19,7 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Account was created successfully')
-            return redirect('frontend:login')
+            return redirect('accounts:login')
     else:
         form = UserForm()
 

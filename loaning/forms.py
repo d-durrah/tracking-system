@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django import forms
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator, MinLengthValidator
@@ -29,6 +31,9 @@ class ResourceSignOutForm(forms.Form):
 
         if sign_out_date and return_date and sign_out_date > return_date:
             self.add_error('return_date', "Return date should be after sign out date")
+
+        if sign_out_date and return_date and (return_date - sign_out_date) > timedelta(days=30):
+            self.add_error('return_date', "Return date should not be more than 1 month from sign out date")
 
         return cleaned_data
 

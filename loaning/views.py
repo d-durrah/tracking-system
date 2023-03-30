@@ -59,7 +59,6 @@ def resourceSignOutForm(request):
             # redirect to generate pdf page
             return HttpResponseRedirect(reverse("frontend:pdf") + '?' + 'log=' + str(log.id))
 
-
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ResourceSignOutForm()

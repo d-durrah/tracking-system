@@ -61,6 +61,8 @@
 
     h1 {
         background: #ffb600;
+        padding-top: 10px;
+        padding-bottom: 10px;
         margin-bottom: 25px;
     }
 
@@ -107,7 +109,7 @@
                 {% for log in logs %}
                 {% if log.returned == False %}
                 <tr>
-                    <td><a href="https://datasafely.online.miradore.com/Device/{{ log.asset_ID }}">{{ log.asset_ID }}</a></td>
+                    <td><a href="{% url 'frontend:miradore' %}?device_id={{ log.asset_ID }}">{{ log.asset_ID }}</a></td>
                     <td>{{ log.model }}</td>
                     <td>{{ log.resource_asset_number }}</td>
                     <td>{{ log.sign_out_date }}</td>
@@ -137,7 +139,7 @@
                 <tbody>
                 {% for asset in assets %}
                 <tr>
-                    <td><a href="https://datasafely.online.miradore.com/Device/{{ asset.asset_id }}">{{ asset.asset_id }}</a></td>
+                    <td><a href="{% url 'frontend:miradore' %}?device_id={{ asset.asset_id }}">{{ asset.asset_id }}</a></td>
                     <td>{{ asset.model }}</td>
                     <td>{{ asset.resource_asset_number }}</td>
                 </tr>

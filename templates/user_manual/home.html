@@ -1,83 +1,92 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
 {% block title %}
-<title>IT manual Home</title>
+<title>IT Help</title>
 {% endblock %}
 
 {% block formstyling %}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="utf-8">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<link rel="stylesheet" href="../../static/css/nicepage.css" media="screen">
-<link rel="stylesheet" href="../../static/css/Home.css" media="screen">
-<script class="u-script" type="text/javascript" src="../../static/js/jquery.js" defer=""></script>
-<script class="u-script" type="text/javascript" src="../../static/js/nicepage.js" defer=""></script>
-<meta name="generator" content="Nicepage 5.6.2, nicepage.com">
-<link id="u-theme-google-font" rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-<link id="u-page-google-font" rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
-
-
-<script type="application/ld+json">{
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "name": ""
-}</script>
-<meta name="theme-color" content="#478ac9">
-<meta property="og:title" content="Home">
-<meta property="og:type" content="website">
-<meta data-intl-tel-input-cdn-path="intlTelInput/">
 <style>
-    ul {
-        padding-left: 0;
-    }
-
     h1 {
         background: #ffb600;
-        margin-bottom: 40px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .text {
+        width: 50%;
+    }
+
+    .box {
+        float: left;
+        width: 29%;
+        padding: 20px;
+        border: 1px solid black;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .box:hover {
+        background-color: whitesmoke;
+        cursor: pointer;
+    }
+
+    .box > p {
+        padding-top: 10%;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .clearfix {
+        margin-top: 2%;
+        height: 100%;
     }
 </style>
 {% endblock %}
 
 {% block content %}
 <section class="home-section">
-    <h1>IT Manual</h1>
-    Choose the device operating system you want to view the manual for.
-
-    <section class="u-clearfix u-section-1" id="sec-8d8b">
-        <div class="u-clearfix u-sheet u-sheet-1">
-            <div class="u-list u-list-1">
-                <div class="u-repeater u-repeater-1">
-                    <div class="u-align-center u-border-2 u-border-grey-75 u-container-align-center u-container-style u-list-item u-repeater-item">
-                        <div class="u-container-layout u-similar-container u-container-layout-1">
-                            <img class="u-align-center u-image u-image-1" src="../../static/images/ios.png"
-                                 data-image-width="2000" data-image-height="2000">
-                            <a href="{% url 'user_manual:ios_manual' %}"
-                               class="u-align-center u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-custom-font u-font-lato u-none u-text-body-color u-btn-1">IOS</a>
-                        </div>
-                    </div>
-                    <div class="u-align-center u-border-2 u-border-grey-75 u-container-align-center u-container-style u-list-item u-repeater-item">
-                        <div class="u-container-layout u-similar-container u-container-layout-2">
-                            <img class="u-align-center u-image u-image-2" src="../../static/images/android.png"
-                                 data-image-width="872" data-image-height="1023">
-                            <a href="{% url 'user_manual:android_manual' %}"
-                               class="u-align-center u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-custom-font u-font-lato u-none u-text-body-color u-btn-2">Android</a>
-                        </div>
-                    </div>
-                    <div class="u-align-center u-border-2 u-border-grey-75 u-container-align-center u-container-style u-list-item u-repeater-item">
-                        <div class="u-container-layout u-similar-container u-container-layout-3">
-                            <img class="u-align-center u-image u-image-3" src="../../static/images/windows.png"
-                                 data-image-width="1024" data-image-height="1024">
-                            <a href="{% url 'user_manual:windows_manual' %}"
-                               class="u-align-center u-border-2 u-border-grey-25 u-btn u-btn-rectangle u-button-style u-custom-font u-font-lato u-none u-text-body-color u-btn-3">Windows</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <h1>IT Help</h1>
+    <div class="text">
+        <p>
+        To enable location tracking, clear passwords on locked devices and efficiently collect the needed data of a mobile asset,
+    we are using Miradore MDM. In order to access those features, a newly purchased device must be enrolled to Miradore MDM.
+    </p><br>
+    <p>
+        Depending on the operating system of the mobile asset, the enrollment process is different.
+        Choose the operating system you want to view to begin the enrollment process or view the instructions on how to use
+        the features Miradore provides.
+    </p>
+    </div>
+    <div class="clearfix">
+        <a href="{% url 'user_manual:ios_manual' %}">
+            <div class="box">
+            <img src="{% static 'images/ios.png' %}" style="width: 50%;">
+            <p>iOS</p>
         </div>
-    </section>
+            </a>
+        <a href="{% url 'user_manual:android_manual' %}">
+        <div class="box">
+            <img src="{% static 'images/android.png' %}" style="width: 43%;">
+            <p>Android</p>
+        </div>
+        </a>
+        <a href="{% url 'user_manual:windows_manual' %}">
+        <div class="box">
+            <img src="{% static 'images/windows.png' %}" style="width: 50%;">
+            <p>Windows</p>
+        </div>
+        </a>
+    </div>
 </section>
 {% endblock %}
