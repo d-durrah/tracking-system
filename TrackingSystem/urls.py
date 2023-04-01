@@ -15,17 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 from accounts.views import login_request
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    path('admin', RedirectView.as_view(url='/admin/')),
     path('admin/login/', login_request),
     path('admin/', admin.site.urls),
     path('chaining/', include('smart_selects.urls')),
     path('', include('frontend.urls')),
     path('', include('accounts.urls')),
-    path('user-manual/', include('user_manual.urls'))
+    path('user-manual/', include('user_manual.urls')),
     # path('password-reset/', auth_views.PasswordResetView.as_view(
     #      template_name='accounts/password_reset.html',
     #      email_template_name='accounts/password_reset_email.html',

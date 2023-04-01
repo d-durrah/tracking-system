@@ -14,7 +14,7 @@ class Log(models.Model):
     sign_out_date = models.DateField(default=date.today, null=False)
     return_date = models.DateField(default=date.today, null=False)
     returned = models.BooleanField(default=False)
-    returned_on = models.DateField(null=True)
+    returned_on = models.DateField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Resource Sign-out Log"
